@@ -1,5 +1,4 @@
-﻿/*6 laba*/
-USE UNIVER;
+﻿USE UNIVER;
 
 /*1. На основе таблицы AUDITORIUM разработать SELECT-запрос, вычисляю-щий максимальную,
 минимальную и среднюю вместимость аудиторий, сум-марную вместимость всех аудиторий и общее количество аудиторий. */
@@ -14,7 +13,7 @@ FROM AUDITORIUM
 сум-марную вместимость всех аудиторий и общее количество аудиторий данного ти-па. 
 Результирующий набор должен содер-жать столбец с наименованием типа ауди-торий (столбец AUDITORI-UM_TYPE.AU-DITORIUM_TYPENAME) и 
 столбцы с вычисленными величинами. Использовать внутреннее соединение таблиц, секцию GROUP BY и агрегатные функции. */
-SELECT  AUDITORIUM_TYPE.AUDITORIUM_TYPENAME,
+SELECT  AUDITORIUM_TYPE.AUDITORIUM_TYPENAME[Тип аудитории],
         max(AUDITORIUM.AUDITORIUM_CAPACITY)[Максимальная вместимость],
 		min(AUDITORIUM.AUDITORIUM_CAPACITY)[Минимальная вместимость],
 		avg(AUDITORIUM.AUDITORIUM_CAPACITY)[Средняя вместимость],
@@ -196,7 +195,7 @@ where g.FACULTY = 'ТОВ'
 group by FACULTY, PROFESSION, SUBJECT
 
 /*10*/
-select a.SUBJECT,a.note,(select count(*)[Количество]
+select a.SUBJECT[Предмет],a.note[Оценка],(select count(*)[Количество]
 from PROGRESS b
 where b.SUBJECT=a.SUBJECT
 and b.NOTE=a.NOTE)
